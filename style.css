@@ -17,22 +17,22 @@
 }
 
 // Animate the size, outside
-.pulse:hover, 
+.pulse:hover,
 .pulse:focus {
   animation: pulse 1s;
-  box-shadow: 0 0 0 2em rgba(#fff,0);
+  box-shadow: 0 0 0 2em rgba(#fff, 0);
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
 }
 
 // Stack multiple shadows, one from the left, the other from the right
 .close:hover,
 .close:focus {
-  box-shadow: 
-    inset -3.5em 0 0 0 var(--hover),
-    inset 3.5em 0 0 0 var(--hover);  
+  box-shadow: inset -3.5em 0 0 0 var(--hover), inset 3.5em 0 0 0 var(--hover);
 }
 
 // Size can also be negative; see how it's smaller than the element
@@ -55,34 +55,30 @@
 }
 
 // Multiple shadows, one on the outside, another on the inside
-.offset {  
-  box-shadow: 
-    0.3em 0.3em 0 0 var(--color),
-    inset 0.3em 0.3em 0 0 var(--color);
-  
+.offset {
+  box-shadow: 0.3em 0.3em 0 0 var(--color), inset 0.3em 0.3em 0 0 var(--color);
+
   &:hover,
   &:focus {
-    box-shadow: 
-      0 0 0 0 var(--hover),
-      inset 6em 3.5em 0 0 var(--hover);
+    box-shadow: 0 0 0 0 var(--hover), inset 6em 3.5em 0 0 var(--hover);
   }
 }
 
 //=== Set button colors
 // If you wonder why use Sass vars or CSS custom properties...
-  // Make a map with the class names and matching colors
+// Make a map with the class names and matching colors
 $colors: (
   fill: #a972cb,
-  pulse: #ef6eae, 
-  close: #ff7f82, 
-  raise: #ffa260, 
-  up: #e4cb58, 
-  slide: #8fc866, 
+  pulse: #ef6eae,
+  close: #ff7f82,
+  raise: #ffa260,
+  up: #e4cb58,
+  slide: #8fc866,
   offset: #19bc8b
 );
 
 // Sass variables compile to a static string; CSS variables are dynamic and inherited
-  // Loop through the map and set CSS custom properties using Sass variables
+// Loop through the map and set CSS custom properties using Sass variables
 @each $button, $color in $colors {
   .#{$button} {
     --color: #{$color};
@@ -91,12 +87,12 @@ $colors: (
 }
 
 // Now every button will have different colors as set above. We get to use the same structure, only changing the custom properties.
-button {  
+button {
   color: var(--color);
   transition: 0.25s;
-  
+
   &:hover,
-  &:focus { 
+  &:focus {
     border-color: var(--hover);
     color: #fff;
   }
@@ -106,8 +102,8 @@ button {
 body {
   color: #fff;
   background: hsl(227, 10%, 10%);
-  font: 300 1em 'Fira Sans', sans-serif;
-  
+  font: 300 1em "Fira Sans", sans-serif;
+
   // Center everything ever
   justify-content: center;
   align-content: center;
@@ -127,9 +123,11 @@ button {
   padding: 1em 2em;
 }
 
-h1 { font-weight: 400; }
+h1 {
+  font-weight: 400;
+}
 
-code { 
+code {
   color: #e4cb58;
   font: inherit;
 }
