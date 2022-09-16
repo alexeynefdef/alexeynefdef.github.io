@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="./js/index.js" defer></script>
+    <title>Flow The Rock</title>
+</head>
+
+<body>
+
+    <div class="main_wrapper">
+        <h1 class="main-head">Flow The Rock</h1>
+        <form action="javascript:;" onsubmit="loadPlaylist(this)">
+            <button type="submit">Reload</button>
+        </form>
+        
+        <dl id="tracklist">
+            <dt class="tracklist_item tracklist_item-head">
+                <div class="tracklist_item-head-data">Title</div>
+                <div class="tracklist_item-head-data">Artist</div>
+                <div class="tracklist_item-head-data">Key</div>
+                <div class="tracklist_item-head-data">BPM</div>
+            </dt>
+        </dl>
+        <div id="loader_wrapper" class="loading">
+            <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
