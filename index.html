@@ -15,8 +15,17 @@
     <div class="main_wrapper">
         <h1 class="main-head">Flow The Rock</h1>
         <form action="javascript:;" onsubmit="loadPlaylist(this)">
+            <button type="submit">Load</button>
+        </form>
+        <form action="javascript:;" onsubmit="reloadPlaylist(this)">
             <button type="submit">Reload</button>
         </form>
+
+        <div class="now_playing">
+            <p>Now playing</p>
+            <dl id="now_playing">
+            </dl>
+        </div>
         
         <dl id="tracklist">
             <dt class="tracklist_item tracklist_item-head">

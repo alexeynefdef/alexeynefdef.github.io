@@ -5,7 +5,15 @@ function loadPlaylist() {
         .then(json => parseResponse(json));
 }
 
+function reloadPlaylist() {
+    document.getElementById('loader_wrapper').classList.add('loading');
+    fetch("http://localhost:8080/flowtherock/playlist/reload")
+        .then(response => response.json())
+        .then(json => parseResponse(json));
+}
+
 function sortPlaylist(trackId) {
+    showNowPlaying(trackId);
     document.getElementById('loader_wrapper').classList.add('loading');
     document.getElementById('tracklist').innerHTML = '';
     fetch("http://localhost:8080/flowtherock/playlist/sort?trackId=" + trackId)
@@ -23,13 +31,22 @@ function parseResponse(responseData) {
     document.getElementById('loader_wrapper').classList.remove('loading')
 }
 
+async function showNowPlaying(trackId) {
+    const track = document.getElementById(trackId);
+console.log(track);
+    document.getElementById('now_playing').innerHTML = ''; 
+    document.getElementById('now_playing').appendChild(track); 
+}
+
 function appendListItemToTrackList(item) {
     let tracklist = document.getElementById('tracklist');
     let matched = item.matched ? "matched" : "";
     let trackId = item.id;
     const node =
-        '<dd class="tracklist_item ' + matched + '"' +
-        'track_id="' + trackId + '"' + 
+        '<dd ' +
+        'class="tracklist_item ' + matched + '"' +
+        ' track_id="' + trackId + '"' + 
+        ' id="' + trackId + '"' +
         ' onclick="sortPlaylist(\'' + trackId + '\')"' +
         '">' +
             "<div>" + item.title + "</div>" +
@@ -37,8 +54,6 @@ function appendListItemToTrackList(item) {
             "<div>" + item.key + "</div>" +
             "<div>" + item.bpm + "</div>" + 
         '</dd>';
-        console.log(node);
-
     tracklist.innerHTML += node;
 }
 

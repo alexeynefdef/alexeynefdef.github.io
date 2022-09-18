@@ -77,6 +77,17 @@ form>button:active {
     background-color: rgba(29, 235, 29, 0.459);
 }
 
+.now_playing>p {
+  color: rgb(243, 194, 32);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.5rem; 
+}
+
+#now_playing>dd {
+  background-color: rgb(243, 194, 32);
+  border: none;
+}
+
 /* LOADER */
 
 #loader_wrapper {
