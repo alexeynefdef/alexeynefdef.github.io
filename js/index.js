@@ -1,22 +1,34 @@
 function loadPlaylist() {
     document.getElementById('loader_wrapper').classList.add('loading');
-    fetch("http://164.90.185.125:8080/flowtherock/playlist")
+    const opt = {
+        method: "GET",
+        headers: new Headers({ 'Access-Control-Allow-Origin': 'http://164.90.185.125:8080'})
+    }
+    fetch("http://164.90.185.125:8080/flowtherock/playlist", opt)
         .then(response => response.json())
         .then(json => parseResponse(json));
 }
 
 function reloadPlaylist() {
+    const opt = {
+        method: "GET",
+        headers: new Headers({ 'Access-Control-Allow-Origin': 'http://164.90.185.125:8080'})
+    }
     document.getElementById('loader_wrapper').classList.add('loading');
-    fetch("http://164.90.185.125:8080/flowtherock/playlist/reload")
+    fetch("http://164.90.185.125:8080/flowtherock/playlist/reload", opt)
         .then(response => response.json())
         .then(json => parseResponse(json));
 }
 
 function sortPlaylist(trackId) {
     showNowPlaying(trackId);
+    const opt = {
+        method: "GET",
+        headers: new Headers({ 'Access-Control-Allow-Origin': 'http://164.90.185.125:8080'})
+    }
     document.getElementById('loader_wrapper').classList.add('loading');
     document.getElementById('tracklist').innerHTML = '';
-    fetch("http://164.90.185.125:8080/flowtherock/playlist/sort?trackId=" + trackId)
+    fetch("http://164.90.185.125:8080/flowtherock/playlist/sort?trackId=" + trackId, opt)
         .then(response =>  {
             return response.json();
         })
