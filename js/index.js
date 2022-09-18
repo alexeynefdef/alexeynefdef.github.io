@@ -1,13 +1,13 @@
 function loadPlaylist() {
     document.getElementById('loader_wrapper').classList.add('loading');
-    fetch("http://localhost:8080/flowtherock/playlist")
+    fetch("http://164.90.185.125:8080/flowtherock/playlist")
         .then(response => response.json())
         .then(json => parseResponse(json));
 }
 
 function reloadPlaylist() {
     document.getElementById('loader_wrapper').classList.add('loading');
-    fetch("http://localhost:8080/flowtherock/playlist/reload")
+    fetch("http://164.90.185.125:8080/flowtherock/playlist/reload")
         .then(response => response.json())
         .then(json => parseResponse(json));
 }
@@ -16,7 +16,7 @@ function sortPlaylist(trackId) {
     showNowPlaying(trackId);
     document.getElementById('loader_wrapper').classList.add('loading');
     document.getElementById('tracklist').innerHTML = '';
-    fetch("http://localhost:8080/flowtherock/playlist/sort?trackId=" + trackId)
+    fetch("http://164.90.185.125:8080/flowtherock/playlist/sort?trackId=" + trackId)
         .then(response =>  {
             return response.json();
         })
