@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/16f9cd2e46.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="./js/playlists.js" defer></script>
+    <title>Flow The Rock</title>
+  </head>
+
+  <body onload="isLoggedIn()">
+    <header>
+      <h1 id="main-heading" class="main-head light">Flow The Rock</h1>
+      <div class="toggle_switch">
+        <input type="checkbox" class="checkbox" id="chk" />
+        <label for="chk" class="label">
+          <i class="fa-solid fa-moon"></i>
+          <i class="fas fa-sun"></i>
+          <div class="ball"></div>
+        </label>
+      </div>
+    </header>
+    <div class="main_wrapper">
+      <dl id="playlists"></dl>
+      <div id="loader_wrapper" class="loading" style="display: none">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <a id="github-link" href="https://github.com/alexeynefdef" target="_blank"
+        ><i class="fa fa-github" aria-hidden="true"></i
+      ></a>
+      <a
+        id="insta-link"
+        href="https://www.instagram.com/ick.bin"
+        target="_blank"
+        ><i class="fa fa-instagram" aria-hidden="true"></i
+      ></a>
+      <a
+        id="linkedin-link"
+        href="https://de.linkedin.com/in/alexeynefdev"
+        target="_blank"
+        ><i class="fa fa-linkedin" aria-hidden="true"></i
+      ></a>
+    </footer>
+  </body>
+</html>
