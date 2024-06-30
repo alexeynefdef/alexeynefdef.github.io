@@ -8,74 +8,22 @@
       src="https://kit.fontawesome.com/16f9cd2e46.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./style/style.css" />
-    <script src="./js/index.js" defer></script>
-    <title>Flow The Rock</title>
+    <script src="./js/playlists.js" defer></script>
+    <title>mixbuddy</title>
   </head>
 
-  <body onload="isLoggedIn()">
-    <div id="totop">
-      <a href="#main-heading" class="totop"
-        ><i class="fa-solid fa-arrow-up"></i
-      ></a>
-    </div>
-
-    <div class="side-card hide" id="side-card">
-      <p>Played</p>
-      <div class="side_button_wrapper">
-        <form action="javascript:;" onsubmit="clearPlaylist()">
-          <button class="side-button" type="submit">Clear</button>
-        </form>
-        <form action="javascript:;" onsubmit="savePlaylist()">
-          <button class="side-button" type="submit">Save</button>
-        </form>
-      </div>
-      <dl id="played">
-        <dt id="tracklist-head" class="tracklist_item tracklist_item-head">
-          <div class="tracklist_item-head-data">Title</div>
-          <div class="tracklist_item-head-data">Artist</div>
-        </dt>
-      </dl>
-    </div>
-
+  <body onload="loadUserData()">
     <header>
-      <button id="side_button">></button>
-      <h1 id="main-heading" class="main-head light">Flow The Rock</h1>
-      <div class="toggle_switch">
-        <input type="checkbox" class="checkbox" id="chk" />
-        <label for="chk" class="label">
-          <i class="fa-solid fa-moon"></i>
-          <i class="fas fa-sun"></i>
-          <div class="ball"></div>
-        </label>
-      </div>
+      <h1 id="main-heading" class="main-head">mixbuddy</h1>
+      <a id="logout" href="./login.html">Logout</a>
     </header>
     <div class="main_wrapper">
-      <a href="./playlists.html" class="backtoplaylists"
-        ><i class="fa-solid fa-arrow-left"></i>Back to your playlists</a
-      >
-      <form action="javascript:;" onsubmit="loadPlaylist(this)">
-        <button type="submit">Load</button>
-      </form>
-      <form action="javascript:;" onsubmit="reloadPlaylist(this)">
-        <button id="reload-button" type="submit">Reload</button>
-      </form>
-
-      <div class="now_playing">
-        <p>Now playing</p>
-
-        <dl id="now_playing"></dl>
+      <div id="user-data-box">
       </div>
-
-      <dl id="tracklist">
-        <dt id="tracklist-head" class="tracklist_item tracklist_item-head">
-          <div class="tracklist_item-head-data">Title</div>
-          <div class="tracklist_item-head-data">Artist</div>
-          <div class="tracklist_item-head-data">Key</div>
-          <div class="tracklist_item-head-data">BPM</div>
-        </dt>
-      </dl>
-      <div id="loader_wrapper" class="loading">
+      <dl id="playlists"></dl>
+      <div id="loader_wrapper" class="loading" style="display: none">
         <div class="lds-spinner">
           <div></div>
           <div></div>

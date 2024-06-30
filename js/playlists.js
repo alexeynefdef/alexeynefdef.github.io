@@ -1,24 +1,72 @@
-function isLoggedIn() {
-  if (getCookie("loggedin") != "true") {
-    window.open("./login.html", "_self");
+function loadUserData() {
+  if (getCookie("loggedin") == "true") {
+    const opt = {
+      method: "GET",
+      headers: new Headers({
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+      }),
+    };
+    fetch("http://localhost:8080/flowtherock/api/user", opt)
+      .then((response) => response.json())
+      .then((json) => parseUserData(json))
+      .then(this.loadAllPlaylists());
   } else {
-    loadAllPlaylitst();
-    loadAllPlaylitst();
-    loadAllPlaylitst();
-    loadAllPlaylitst();
-    loadAllPlaylitst();
+    window.open("./login.html", "_self");
   }
 }
 
-function loadAllPlaylitst() {
-  let id = "playlistId12345676";
-  let img = "./img/63596316.jfif";
-  let title = "Playlist title";
-  let info = "Playlist info";
+function parseUserData(user) {
+  //let id = user.id;
+  let email = user.email;
+  let name = user.name;
+  let img = user.img;
+
+  let data  = '';
+  data += '<div class="user-data" id="user-img"> ';
+  data += '<img src="' + img + '" >';
+  data += ' </div>';
+  data += '<div class="user-data" id="user-name"> ';
+  data += '<h1>';
+  data += name;
+  data += '</h1>';
+  data += ' </div>';
+  data += '<div class="user-data" id="user-email"> ';
+  data += '<h3>';
+  data += email;
+  data += '</h3>';
+  data += ' </div>';
+  document.getElementById("user-data-box").innerHTML += data;  
+}
+
+function loadAllPlaylists() {
+  document.getElementById("loader_wrapper").classList.add("loading");
+  const opt = {
+    method: "GET",
+    headers: new Headers({
+      "Access-Control-Allow-Origin": "http://localhost:8080",
+    }),
+  };
+  fetch("http://localhost:8080/flowtherock/api/playlists", opt)
+    .then((response) => response.json())
+    .then((json) => parsePlaylists(json));
+}
+
+function parsePlaylists(json) {
+  json.forEach((entry) => {
+    appendPlaylist(entry);
+  });
+  document.getElementById("loader_wrapper").classList.remove("loading");
+}
+
+function appendPlaylist(playlist) {
+  let id = playlist.id;
+  let img = playlist.imageUrl;
+  let title = playlist.title;
+  let info = "Total tracks: " + playlist.count;
   let item =
     "<dd " +
-    'id="playlistId12345676"' +
-    ' playlistid="playlistId12345676"' +
+    'id="' + id + '"' +
+    ' playlistid="' + id + '"' +
     ' class="playlist-list"' +
     " onclick=\"openPlaylist('" +
     id +
@@ -43,8 +91,7 @@ function loadAllPlaylitst() {
 }
 
 function openPlaylist(playlistId) {
-  console.log(playlistId);
-  window.open("./index.html", "_self");
+  window.open("./tracks.html?playlistId=" + playlistId, "_self");
 }
 
 //Get cookie
@@ -63,28 +110,3 @@ function getCookie(cname) {
   }
   return "";
 }
-
-//toggle
-const chk = document.getElementById("chk");
-
-chk.addEventListener("change", () => {
-  document.body.classList.toggle("dark");
-  document.getElementById("main-heading").classList.toggle("light");
-  let buttons = document.getElementsByTagName("button");
-  for (const button of buttons) {
-    button.classList.toggle("dark");
-  }
-
-  let isDark = false;
-  let bodyClassList = document.body.classList;
-  bodyClassList.forEach((className) => {
-    if (className === "dark") {
-      isDark = true;
-    }
-  });
-
-  let items = document.getElementsByTagName("dd");
-  for (const item of items) {
-    item.classList.toggle("dark");
-  }
-});

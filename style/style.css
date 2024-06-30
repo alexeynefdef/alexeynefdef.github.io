@@ -1,17 +1,14 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Nabla&family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nabla&family=Roboto:wght@500&display=swap');
 
+:root {
+  --basic_dark: #212529;
+}
+
 body {
-  background-color: rgb(241, 234, 189);
-  margin: 0;
+  background-color: var(--basic_dark);
+  margin: 0;  
 }
 
 header {
@@ -25,7 +22,7 @@ header {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #212529;
+  background-color: var(--basic_dark);
   margin-bottom: 20px;
   height: 100px;
 }
@@ -43,7 +40,7 @@ footer {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background-color: #212529;
+  background-color: var(--basic_dark);
   height: 70px;
 }
 
@@ -81,6 +78,12 @@ footer>a {
   font-size: 3rem;
 }
 
+header>a{
+  text-decoration: none;
+  font-family: 'Nabla', cursive;
+  font-size: 2rem;
+}
+
 #totop {
   display: block;
   position: fixed;
@@ -89,7 +92,7 @@ footer>a {
   padding: 5px 10px;
   border: solid 2px #fff;
   border-radius: 15%;
-  background-color: #212529;
+  background-color: var(--basic_dark);
 }
 
 #totop>a {
@@ -115,7 +118,8 @@ footer>a {
 
 
 .tracklist_item {
-  border: solid 2px #000;
+  border: solid 2px #fff;
+  color: #fff;
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -157,10 +161,22 @@ footer>a {
   align-items: center;
 }
 
-.tracklist_item:not(#tracklist-head, #now_playing>dd):hover,
-.tracklist_item:not(#tracklist-head, #now_playing>dd):active {
+.tracklist_item:not(
+#tracklist-head, 
+#now_playing>dd, 
+#now_playing_add>dt, 
+#now_playing_add>dd,
+#preview
+):hover,
+.tracklist_item:not(
+#tracklist-head, 
+#now_playing>dd, 
+#now_playing_add>dt, 
+#now_playing_add>dd,
+#preview
+):active {
   background-color: rgba(254, 195, 0, 0.696);
-  color: #212529;
+  color: var(--basic_dark);
 }
 
 .tracklist_item-head {
@@ -168,7 +184,7 @@ footer>a {
 }
 
 form>button {
-  border: solid 2px #000;
+  border: solid 2px #fff;
   border-radius: 5px;
   background: none;
   font-size: 2rem;
@@ -183,8 +199,6 @@ form>button {
 .backtoplaylists {
   display: block;
   text-align: center;
-  border: solid 2px #000;
-  border-radius: 5px;
   background: none;
   font-size: 2rem;
   color: rgb(243, 194, 32);
@@ -203,12 +217,12 @@ form>button {
   background-color: rgba(222, 50, 50, 0.6);
 }
 
-form>button:hover,
-form>button:active,
+form>button:hover:not(#preview, .player),
+form>button:active:not(#preview, .player),
 .backtoplaylists:hover,
 .backtoplaylists:active {
   background-color: rgba(254, 195, 0, 0.696);
-  color: #212529;
+  color: var(--basic_dark);
 }
 
 .matched {
@@ -234,8 +248,8 @@ form>button:active,
   padding: 15px;
   margin: 20px;
   position: absolute;
-  background-color: rgb(241, 234, 189);
-  border: solid 2px #000;
+  background-color: var(--basic_dark);
+  border: solid 2px #fff;
   text-align: center;
   left: 0;
   top: 20%;
@@ -287,6 +301,10 @@ form>button:active,
   display: none;
 }
 
+.hide-play {
+  display: none;
+}
+
 .hide {
   -webkit-transform: translateX(-103.5%);
   -ms-transform: translateX(-103.5%);
@@ -299,9 +317,38 @@ form>button:active,
   transition: transform 0.3s linear, -webkit-transform 0.3s linear;
 }
 
-#now_playing>dd {
+#now_playing>dd,
+#now_playing_add>dd {
   background-color: rgb(243, 194, 32);
   border: none;
+}
+
+#additional-data-head {
+  border: none;
+}
+
+#logout {
+  position: absolute;
+  right: 5%;
+}
+
+.fa-play,
+.fa-pause {
+  color: #fff;
+  border: none;
+  margin-top: 5px;
+}
+
+.fa-pause:hover,
+.fa-pause:active,
+.fa-play:hover,
+.fa-play:active {
+  color: var(--basic_dark);
+}
+
+.player {
+  border: none;
+  margin-bottom: 0;
 }
 
 /* LOADER */
@@ -465,90 +512,7 @@ form>button:active,
 
 /* LOADER END*/
 
-/* TOGGLE */
-
-body.dark {
-  background: #212529;
-  color: #fff;
-}
-
-.dark .side-card {
-  background-color: #212529;
-  border: solid 2px #fff;
-}
-
-.tracklist_item.dark,
-button.dark {
-  border: solid 2px #fff;
-}
-
-.fa-sun {
-  color: #f1c40f;
-}
-
-.fa-moon {
-  margin-left: 3px;
-  color: #ffe227;
-}
-
-.label {
-  background-color: #121212;
-  border-radius: 50px;
-  border: solid 1px #fff;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  width: 36px;
-  height: 16px;
-  padding: 5px;
-  cursor: pointer;
-  -webkit-transform: scale(1.5);
-  -ms-transform: scale(1.5);
-  transform: scale(1.5);
-}
-
-.checkbox {
-  opacity: 0;
-  position: absolute;
-}
-
-.label .ball {
-  background-color: #fff;
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  -webkit-transform: translateX(-2px);
-  -ms-transform: translateX(-2px);
-  transform: translateX(-2px);
-  -webkit-transition: -webkit-transform 0.3s linear;
-  transition: -webkit-transform 0.3s linear;
-  -o-transition: transform 0.3s linear;
-  transition: transform 0.3s linear;
-  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
-}
-
-.checkbox:checked+.label .ball {
-  -webkit-transform: translateX(18px);
-  -ms-transform: translateX(18px);
-  transform: translateX(18px);
-}
-
 @media screen and (max-width:900px) {
-
-  .toggle_switch {
-    -webkit-transform: scale(0.9);
-    -ms-transform: scale(0.9);
-    transform: scale(0.9);
-
-  }
 
   .side-card {
     width: 60%;
@@ -569,10 +533,8 @@ button.dark {
     font-size: 1.5rem;
   }
 
-  .toggle_switch {
-    -webkit-transform: scale(0.7);
-    -ms-transform: scale(0.7);
-    transform: scale(0.7);
+  header>a {
+    font-size: 1rem;
   }
 
   header {
@@ -592,8 +554,6 @@ button.dark {
   }
 
 }
-
-/* TOGGLE END*/
 
 /* LOGIN */
 
@@ -700,12 +660,13 @@ dd.playlist-list {
   width: 30%;
   padding: 15px;
   margin: 10px;
-  border: solid 2px #000;
+  border: solid 2px #fff;
   border-radius: 5px;
 }
 
 @media screen and (max-width: 500px) {
-  dd.playlist-list {
+  dd.playlist-list,
+  #user-data-box {
     width: 80%;
   }
 
@@ -732,4 +693,26 @@ img.playlist-item {
 
 .playlist-item>* {
   font-family: 'Bebas Neue', cursive;
+}
+
+.playlist-item>h3,
+.playlist-item>p {
+  text-align: right;
+  color: #fff;
+}
+
+#user-data-box {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  font-family: 'Bebas Neue', cursive;
+}
+
+#user-img {
+  clip-path: circle();
 }

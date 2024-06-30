@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/16f9cd2e46.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <script src="./js/tracks.js" defer></script>
+    <title>mixbuddy</title>
+  </head>
+
+  <body onload="onLoad()">
+    <div id="totop">
+      <a href="#main-heading" class="totop"
+        ><i class="fa-solid fa-arrow-up"></i
+      ></a>
+    </div>
+
+    <div class="side-card hide" id="side-card">
+      <p>Played</p>
+      <div class="side_button_wrapper">
+        <form action="javascript:;" onsubmit="clearPlaylist()">
+          <button class="side-button" type="submit">Clear</button>
+        </form>
+        <form action="javascript:;" onsubmit="savePlaylist()">
+          <button class="side-button" type="submit">Save</button>
+        </form>
+      </div>
+      <dl id="played">
+        <dt id="tracklist-head" class="tracklist_item tracklist_item-head">
+          <div class="tracklist_item-head-data">Title</div>
+          <div class="tracklist_item-head-data">Artist</div>
+        </dt>
+      </dl>
+    </div>
+
+    <header>
+      <button id="side_button">></button>
+      <h1 id="main-heading" class="main-head light">Flow The Rock</h1>
+      <a href="./login.html">Logout</a>
+    </header>
+    <div class="main_wrapper">
+      <form action="javascript:;" onsubmit="backToPlaylists()">
+        <button type="submit"><i class="fa-solid fa-arrow-left"></i>&nbsp;Back to your playlists</button>
+      </form>
+      <form action="javascript:;" onsubmit="loadPlaylist()">
+        <button id="reload-button" type="submit">Refresh</button>
+      </form>
+
+      <div class="now_playing" id="now_playing_box">
+        <p>Now playing</p>
+        <dl id="now_playing"></dl>
+        <dl id="now_playing_add"></dl>
+      </div>
+
+      <dl id="tracklist">
+        <dt id="tracklist-head" class="tracklist_item tracklist_item-head">
+          <div class="tracklist_item-head-data">Title</div>
+          <div class="tracklist_item-head-data">Artist</div>
+          <div class="tracklist_item-head-data">Key</div>
+          <div class="tracklist_item-head-data">BPM</div>
+        </dt>
+      </dl>
+      <div id="loader_wrapper" class="loading">
+        <div class="lds-spinner">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <a id="github-link" href="https://github.com/alexeynefdef" target="_blank"
+        ><i class="fa fa-github" aria-hidden="true"></i
+      ></a>
+      <a
+        id="insta-link"
+        href="https://www.instagram.com/ick.bin"
+        target="_blank"
+        ><i class="fa fa-instagram" aria-hidden="true"></i
+      ></a>
+      <a
+        id="linkedin-link"
+        href="https://de.linkedin.com/in/alexeynefdev"
+        target="_blank"
+        ><i class="fa fa-linkedin" aria-hidden="true"></i
+      ></a>
+    </footer>
+  </body>
+</html>
